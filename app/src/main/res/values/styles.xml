@@ -8,4 +8,8 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="AppTheme.GreenRipple">
+        <item name="colorControlHighlight">#ff0000</item>
+    </style>
+
 </resources>
