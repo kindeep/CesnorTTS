@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
 
             reco.close();
         } catch (Exception ex) {
-            Log.e("SpeechSDKDemo", "unexpected " + ex.getMessage());
+
             assert (false);
         }
         hear.setText("Ready to play");
@@ -112,12 +112,12 @@ public class MainActivity extends AppCompatActivity {
 
 
             }
-            hear.setText("Hear");
         } catch (Exception e) {
             String toSpeak = "Something went wrong, please try again";
             Toast.makeText(getApplicationContext(), toSpeak, Toast.LENGTH_SHORT).show();
             t1.speak(toSpeak, TextToSpeech.QUEUE_FLUSH, null);
         }
+        hear.setText("Hear");
     }
 
     static String[] toArray(String s) {
@@ -129,14 +129,14 @@ public class MainActivity extends AppCompatActivity {
             words[i] = new String(words[i].replaceAll("[^a-zA-Z ]", ""));
 
         }
-        loge(words);
+
         return words;
     }
 
     String nonPrafanity() {
+
         RemoveProfanity rp = new RemoveProfanity();
         String stringgg = rp.run(toArray(result.getText()));
-        Log.e("Result", stringgg);
 
         return stringgg;
     }

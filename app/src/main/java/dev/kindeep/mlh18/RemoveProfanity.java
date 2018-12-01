@@ -53,7 +53,7 @@ public class RemoveProfanity {
 	 */
 	private boolean isOffensive(String word) {
 		try {
-			Log.e("TheWord", word);
+
 			// builds url.
 			StringBuilder sb = new StringBuilder();
 			sb.append(new String("https://www.dictionaryapi.com/api/v3/references/collegiate/json/"));
@@ -73,15 +73,21 @@ public class RemoveProfanity {
 				content.append(inputLine);
 			}
 			ja = jp.parse(content.toString()).getAsJsonArray();
+
+			JsonElement e;
+
 			o = (JsonObject) ja.get(0);
+			e = o.get("meta").getAsJsonObject().get("offensive");
 
-			JsonElement result = o.get("meta").getAsJsonObject().get("offensive");
+
+
 			in.close();
-			return result.getAsBoolean();
+			return e.getAsBoolean();
 
-		} catch (IOException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+
 			return false;
 		}
 	}
